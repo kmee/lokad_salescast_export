@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record id="kmee_lokad_export_tsv_form" model="ir.ui.view">
+			<field name="name">Lokad</field>
+			<field name="model">kmee_lokad.export_tsv</field>
+			<field name="arch" type="xml">
+				<form string="Exportar Lokad" version="7.0">
+					<field invisible="1" name="state"/>
+					<field invisible="1" name="item_name"/>	
+					<field invisible="1" name="order_name"/>	
+						<group>
+							<group states="init">
+								<field name="start_date" />
+								<field name="final_date" />									
+							</group>
+							<group states="done">			
+								<field name="file_itens" filename="item_name"/>			
+								<field name="file_order" filename="order_name"/>			
+							</group>
+						</group>
+					<group><footer states="init">
+						<button name="export" string="Export" type="object" class="oe_highlight" /> ou
+						<button special="cancel" string="Cancel" type="object" class="oe_link"/>							
+					</footer></group>
+					<footer states="done">
+						<button special="cancel" string="Close" type="object"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+					
+		<record id="action_kmee_lokad_export_tsv_form" model="ir.actions.act_window">
+			<field name="name">Export Lokad TSV</field>
+			<field name="res_model">kmee_lokad.export_tsv</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+		<act_window id="kmee_lokad_export_tsv" key2="client_action_multi"
+			name="Lokad Export" res_model="kmee_lokad.export_tsv"
+			src_model="product.product" view_id="kmee_lokad_export_tsv_form"
+			view_mode="form" target="new" view_type="form" />
+	</data>
+</openerp>
