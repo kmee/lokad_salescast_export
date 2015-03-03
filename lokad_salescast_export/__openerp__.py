@@ -38,4 +38,6 @@
     'test': [],
     'installable': True,
     'active': False,
+    'price': 1,
+    'currency': 'USD',
 }
